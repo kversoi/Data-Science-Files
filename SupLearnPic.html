@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Secure Login | Access Your Securly Account</title>
+  <meta name="description" content="Log in to your Securly account using your school's Google or Microsoft Azure account.">
+</head>
+
+    <!-- this is where UI start  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="app/css/login-layouts.css">
+    <style>
+        body {
+            background-color: #F7FAFC;
+        }
+        .box-design h1 {
+            font-family: 'MetropolisSemiBold', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: #171b1f;
+        }
+        .form-section h1 {
+            line-height: 1.2;
+            margin-top: 0;
+        }
+    </style>
+<body>
+<main>
+    <div class="row hide">
+        <div class="col-sm-5 left-bg-img girl-bg hidden-xs">
+            <a href="/"><img src="app/images/logo.svg" alt="Securly" title="Securly" class="logo"></a>
+
+        </div>
+        <div class="col-sm-7 right-bg-content">
+
+            <section>
+                <div class="form-section">
+                    <h1>Login to continue</h1>
+                    <span class="gray-tip">Please log in with your school email and password..</span>
+                    <a href="https://www.securly.com/loginssoAzure.php?categoryid=68837441536&i2n=58366668&pac=true&policyid=0&rand=929795983&reason=&spac_did_sync_token=054db6374e4a4933e8395d24b4011480&ssl=true&url=cmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9mYXJoYWQtcG91cmthbWFsaS9NQVRINjM4OC9tYWluL2ltYWdlcy9zdXBlcnZpc2VkLnBuZw%3D%3D&go=true&type=1" class="btn google-button">Login with Google</a>
+                    <a href="https://www.securly.com/loginssoAzure.php?categoryid=68837441536&i2n=58366668&pac=true&policyid=0&rand=929795983&reason=&spac_did_sync_token=054db6374e4a4933e8395d24b4011480&ssl=true&url=cmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9mYXJoYWQtcG91cmthbWFsaS9NQVRINjM4OC9tYWluL2ltYWdlcy9zdXBlcnZpc2VkLnBuZw%3D%3D&go=true&type=2" class="btn azure-button">Login with Microsoft Azure AD</a>
+            </section>
+        </div>
+    </div>
+<!-- New html layout -->
+<div class="container aligned-container student-login-image">
+    <div class="row">
+        <div class="col-sm-6 form-col col-sm-push-6">
+            <section>
+                <div class="form-section box-design">
+                    <h1>Login to continue</h1>
+                    <span class="gray-tip">Please log in with your school email and password.</span>
+                    <!-- S: REL-715 -->
+                    <!-- <a href="/app/login?type=1" class="btn google-button">Login with Google</a> -->
+                    <!-- <a href="/app/login?type=2" class="btn azure-button">Login with Microsoft Azure AD</a> -->
+                    <!-- S: REL-715 -->
+                    <a href="https://www.securly.com/loginssoAzure.php?categoryid=68837441536&i2n=58366668&pac=true&policyid=0&rand=929795983&reason=&spac_did_sync_token=054db6374e4a4933e8395d24b4011480&ssl=true&url=cmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9mYXJoYWQtcG91cmthbWFsaS9NQVRINjM4OC9tYWluL2ltYWdlcy9zdXBlcnZpc2VkLnBuZw%3D%3D&go=true&type=1" class="btn btnn btn-google">
+                        <img src="/app/images/g-logo.png" alt="Google Icon" aria-hidden="true"><span>Login with Google</span>
+                    </a>
+                    <a href="https://www.securly.com/loginssoAzure.php?categoryid=68837441536&i2n=58366668&pac=true&policyid=0&rand=929795983&reason=&spac_did_sync_token=054db6374e4a4933e8395d24b4011480&ssl=true&url=cmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9mYXJoYWQtcG91cmthbWFsaS9NQVRINjM4OC9tYWluL2ltYWdlcy9zdXBlcnZpc2VkLnBuZw%3D%3D&go=true&type=2" class="btn btnn btn-azure">
+                        <img src="/app/images/ms-logo.png" alt="MS Azure Icon" aria-hidden="true"><span>Login with Microsoft Azure AD</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+                <script type="text/javascript" language="javascript" src="/js/vendor/jquery-1.11.0.min.js"></script>
+            <script>
+                $.get('https://sslcheck.securly.com/', function() {})
+                    .fail(function() {
+                        certReport(false);
+                    })
+                    .done(function() {
+                        certReport(true);
+                    });
+                function certReport(status) {
+                    $.post("/app/schools/ajax/certReport.php", { fid: "securly@svvsd.org", user:  "(none - login)", time: Math.floor(Date.now()/1000), certStatus: status });
+                }
+            </script>
+                <!-- this is where UI end -->
+    </main>
+</body>
+</html>
